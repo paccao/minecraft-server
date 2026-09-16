@@ -1,0 +1,36 @@
+---
+services:
+  mc:
+    image: itzg/minecraft-server:stable-java21-alpine
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: "MODRINTH"
+      VERSION: "1.21.1"
+      MODRINTH_MODPACK: /modpacks/create-adventure-SMP-1.0.0.mrpack
+      MEMORY: "16384M"
+      MAX_MEMORY: "20480M"
+      MAX_PLAYERS: "10"
+      MOTD: "§6gaming"
+      ONLINE_MODE: "false"
+      USE_MEOWICE_FLAGS: "true"
+      TZ: "Europe/Stockholm"
+      DIFFICULTY: "2"
+      SIMULATION_DISTANCE: "11"
+      VIEW_DISTANCE: "12"
+      LEVEL: "pacpack"
+      SPAWN_PROTECTION: "0"
+      RATE_LIMIT: "0"
+      ENFORCE_SECURE_PROFILE: "false"
+      STATUS_HEARTBEAT_INTERVAL: "60000"
+      #RCON_CMDS_LAST_DISCONNECT: |-
+      # Example: run backup command when last player disconnects from the server
+      ALLOW_FLIGHT: "true"
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: "true"
+      SERVER_NAME: "paccao's server"
+    volumes:
+      - "./mc-data:/data:Z" # :Z for rootless setup
+      - ./modpacks:/modpacks:ro
