@@ -2,5 +2,6 @@
 !.gitignore
 !README.md
 !modpacks
+!mc-data
 !*.mrpack
 !docker-compose.yaml
