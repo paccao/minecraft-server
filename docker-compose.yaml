@@ -22,6 +22,11 @@ services:
         https://cdn.modrinth.com/data/iP3wH1ha/versions/4t8L0dGP/mcw-mcwstairs-1.0.2-mc1.21.1neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
         https://cdn.modrinth.com/data/n2fvCDlM/versions/StnP0RNi/mcw-trapdoors-1.1.5-mc1.21.1neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
         https://cdn.modrinth.com/data/C7I0BCni/versions/rQUE4LCz/mcw-mcwwindows-2.4.2-mc1.21.1neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/tagwiZkJ/versions/VEburL70/polymorph-neoforge-1.1.0%2B1.21.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/u6dRKJwZ/versions/YAcQ6elZ/jei-1.21.1-neoforge-19.27.0.340.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+      MODRINTH_EXCLUDE_FILES: |
+        polymorph-neoforge-1.2.0+1.21.1.jar
+        jei-1.21.1-neoforge-19.27.0.429.jar
       MEMORY: "16384M"
       MAX_MEMORY: "20480M"
       MAX_PLAYERS: "10"
