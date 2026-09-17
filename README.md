@@ -18,7 +18,7 @@ podman compose up
 
 Are taken automatically with simple backups. They are stored as a zip in `mc-data/simplebackups/<$LEVEL>/`
 
-$LEVEL comes from the compose files values.
+$LEVEL should match the value of the var `LEVEL` in the compose file.
 
 ## Online mode
 
