@@ -26,10 +26,13 @@ Set the argument `ONLINE_MODE` in the compose file to `true`
 
 
 ## Things to nerf (TODO)
-- Forgotten (mob) drop rate of lucky hat
+
+There is a graphical config interface ingame, but it says its locked ingame, some troubleshooting is required
+
+- Forgotten (mob) drop rate of lucky hat - NOT CONFIGURABLE
 - Ancient debris/ netherite ingot in supplementaries/quark/etc.. strongholds in the nether
-- Maybe good enchanting books from pots in caves? Needs more testing
+- Maybe good enchanting books from pots in caves? Needs more testing (Supplementaries)
 - Emeralds, diamonds, enchanted weapons etc from larger villager cities in the overworld
 - Create tinker city makes the player skip Create progression entirely (easy getting a shit ton of bronze, rotation speed controllers, and some brass casing etc.
 - RPG mod(s) overall seems strong? Only tried Warrior at the time of writing. Shield spam plus sword ability super strong. Either vanilla minecraft shields are just strong, or the Spell casting on the weapons are too strong.Needs more testing with bosses etc.
-
+- create enchanting industries. Good books should cost way more XP, or perhaps recipes needs to be modified
