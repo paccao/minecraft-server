@@ -17,7 +17,7 @@ services:
       MAX_MEMORY: "24576M"
       MAX_PLAYERS: "10"
       MOTD: "§6gaming"
-      ONLINE_MODE: "true"
+      ONLINE_MODE: "false"
       USE_MEOWICE_FLAGS: "true"
       TZ: "Europe/Stockholm"
       DIFFICULTY: "2"
