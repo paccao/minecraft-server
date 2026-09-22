@@ -28,7 +28,7 @@ services:
       STATUS_HEARTBEAT_INTERVAL: "60000"
       ALLOW_FLIGHT: "true"
       ANNOUNCE_PLAYER_ACHIEVEMENTS: "true"
-      SERVER_NAME: "my server"
+      SERVER_NAME: "paccao's server"
     volumes:
-      - "./data-v2:/data"
+      - "./data-v2:/data:U"
       - ./modpacks:/modpacks:ro
