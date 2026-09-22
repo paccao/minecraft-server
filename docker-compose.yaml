@@ -26,8 +26,6 @@ services:
       RATE_LIMIT: "0"
       ENFORCE_SECURE_PROFILE: "false"
       STATUS_HEARTBEAT_INTERVAL: "60000"
-      RCON_CMDS_LAST_DISCONNECT: |-
-        /simplebackups backup start
       ALLOW_FLIGHT: "true"
       ANNOUNCE_PLAYER_ACHIEVEMENTS: "true"
       SERVER_NAME: "my server"
