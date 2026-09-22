@@ -20,6 +20,12 @@ Are taken automatically with simple backups. They are stored as a zip in `mc-dat
 
 $LEVEL should match the value of the var `LEVEL` in the compose file.
 
+## Restore backups / create server from a backup
+
+If the mounted data path is empty, the server will either create a new save file. But if the `WORLD` variable is defined, it will create the server based on that backup.
+
+If you want to restore from a specific backup, change the `WORLD` variable and add `FORCE_WORLD_COPY=true`
+
 ## Online mode
 
 Set the argument `ONLINE_MODE` in the compose file to `true`
