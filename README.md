@@ -60,6 +60,9 @@ Or you can run `/kill @e[type=!player, distance=..5]`
 `/clear` will remove all items from your inventory.
 `/kill *` will kill all entities, THIS INCLUDES CREATE CONTRAPTIONS
 
+## Add or remove specific mods
+
+Do it with the `MODS` and `MODRINTH_EXCLUDE_FILES` respectively in the compose values. See `docker-compose-1.0.0.yaml` for reference
 
 ## Things to nerf (TODO)
 
