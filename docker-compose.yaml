@@ -11,6 +11,8 @@ services:
       TYPE: "MODRINTH"
       VERSION: "1.21.1"
       MODRINTH_MODPACK: /modpacks/create-adventure-SMP-1.2.mrpack
+      MODS: |
+        https://cdn.modrinth.com/data/XlUm5I57/versions/ZCRHabJE/icys-better-horses-2.0.0-1.21.1-neo.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
       MEMORY: "20480M"
       MAX_MEMORY: "24576M"
       MAX_PLAYERS: "10"
