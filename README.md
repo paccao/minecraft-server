@@ -40,6 +40,27 @@ for example:
 podman exec minecraft-server_mc_1 rcon-cli op <playerName>
 ```
 
+### Debug crash issues
+
+```sh
+podman exec minecraft-server_mc_1 rcon-cli tick freeze
+```
+
+Then you can log in and troubleshoot. Run `/tick step` to step through the ticks, multiple times and then try `/tick unfreeze`. This can fix issues where an ungodly amount of game actions try to happen in the same tick. If you step through it, it wont do it all at the same time and the server most likely can handle it.
+
+Check hitboxes with `F3+B`.
+
+If you want to kill a specific entity in-game, you can punch it with your fist, then run `/kill <Tab>` and it should autocomplete with the ID
+
+Or you can run `/kill @e[type=!player, distance=..5]`
+
+
+**WARNING**
+
+`/clear` will remove all items from your inventory.
+`/kill *` will kill all entities, THIS INCLUDES CREATE CONTRAPTIONS
+
+
 ## Things to nerf (TODO)
 
 There is a graphical config interface ingame, but it says its locked ingame, some troubleshooting is required
