@@ -66,15 +66,14 @@ Do it with the `MODS` and `MODRINTH_EXCLUDE_FILES` respectively in the compose v
 
 ## Things to nerf (TODO)
 
-There is a graphical config interface ingame, but it says its locked ingame, some troubleshooting is required
+https://misode.github.io/ Loot generator - mainly for vanilla mc but also some mods
 
-- Forgotten (mob) drop rate of lucky hat - NOT CONFIGURABLE
 - Ancient debris/ netherite ingot in supplementaries/quark/etc.. strongholds in the nether
 - Maybe good enchanting books from pots in caves? Needs more testing (Supplementaries)
 - Emeralds, diamonds, enchanted weapons etc from larger villager cities in the overworld
 - Create tinker city makes the player skip Create progression entirely (easy getting a shit ton of bronze, rotation speed controllers, and some brass casing etc.
 - RPG mod(s) overall seems strong? Only tried Warrior at the time of writing. Shield spam plus sword ability super strong. Either vanilla minecraft shields are just strong, or the Spell casting on the weapons are too strong.Needs more testing with bosses etc.
-- create enchanting industries. Good books should cost way more XP, or perhaps recipes needs to be modified
+- create enchanting industries. Good books should cost way more XP, or perhaps recipes needs to be modified [link to docs](https://github.com/DragonsPlusMinecraft/CreateEnchantmentIndustry/blob/1.21.1/6.0.0-dev/MODPACK-README.md#enchanted-book-printing-costs)
 
 ## Interesting mods to add maybe
 https://modrinth.com/mod/create-cobblestone - reduces lag but makes it really easy to generate cobblestone, might be too easy
