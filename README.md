@@ -4,9 +4,11 @@ Documentation: https://docker-minecraft-server.readthedocs.io
 
 Set up config easily with https://setupmc.com/java-server/
 
+Full modlist of `create-adventure-SMP-1.2.mrpack` is in [modlist.txt](modlist.txt), the mrpack is not stored in git because I dont know if it contains sensitive information or not.
+
 ## Getting started
 
-Download the latest `modpacks/*.mrpack` file to your mc launcher (Prism or modrinth)
+Download the latest `modpacks/*.mrpack` file to your mc launcher ([Prism](https://prismlauncher.org/) or [modrinth](https://modrinth.com/app))
 
 Spin up the server with compose up, it will download the mods and configure the server automagically
 
@@ -16,19 +18,23 @@ podman compose up
 
 ## Backups
 
-Are taken automatically with simple backups. They are stored as a zip in `mc-data/simplebackups/<$LEVEL>/`
+Are taken automatically with simple backups. They are stored as a zip in `<data-dir>/simplebackups/<LEVEL>/`
 
-$LEVEL should match the value of the var `LEVEL` in the compose file.
+`<data-dir>` is the path to your minecraft data on your localhost, in my case `data-v2`
+
+`<LEVEL>` should match the value of the var `LEVEL` in the compose file.
 
 ## Restore backups / create server from a backup
 
 If the mounted data path is empty, the server will either create a new save file. But if the `WORLD` variable is defined, it will create the server based on that backup.
 
-If you want to restore from a specific backup, change the `WORLD` variable and add `FORCE_WORLD_COPY=true`
+If you want to restore from a specific backup, change the `WORLD` variable and add `FORCE_WORLD_COPY=true`. 
+
+**Make sure to remove it after you have restored your backup**
 
 ## Online mode
 
-Set the argument `ONLINE_MODE` in the compose file to `true`
+Set the argument `ONLINE_MODE` in the compose file to `true`, makes it use minecraft servers for authentication but there is a bug with the mod `Minecraft Comes Alive` when you die, you respawn as your minecraft accounts model, instead of the "villager-esque" one.
 
 ## Run commands towards the server
 
