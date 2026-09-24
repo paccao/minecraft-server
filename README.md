@@ -74,6 +74,7 @@ https://misode.github.io/ Loot generator - mainly for vanilla mc but also some m
 - Create tinker city makes the player skip Create progression entirely (easy getting a shit ton of bronze, rotation speed controllers, and some brass casing etc.
 - RPG mod(s) overall seems strong? Only tried Warrior at the time of writing. Shield spam plus sword ability super strong. Either vanilla minecraft shields are just strong, or the Spell casting on the weapons are too strong.Needs more testing with bosses etc.
 - create enchanting industries. Good books should cost way more XP, or perhaps recipes needs to be modified [link to docs](https://github.com/DragonsPlusMinecraft/CreateEnchantmentIndustry/blob/1.21.1/6.0.0-dev/MODPACK-README.md#enchanted-book-printing-costs)
+- Disable glidewings in icy's better horses - focus on Create for flight in this modpack
 
 ## Interesting mods to add maybe
 https://modrinth.com/mod/create-cobblestone - reduces lag but makes it really easy to generate cobblestone, might be too easy
