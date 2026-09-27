@@ -10,3 +10,7 @@
 !data-v2
 !backups
 !modlist.txt
+!ansible/
+!ansible/**/*
+!mise.toml
+!mise.lock

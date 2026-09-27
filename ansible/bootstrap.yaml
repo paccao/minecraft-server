@@ -1,0 +1,62 @@
+---
+- name: Bootstrap Alpine for Ansible
+  hosts: alpine
+  gather_facts: false
+  become: false
+
+  vars:
+    admin_user: minecraft
+    admin_pubkey: "ssh-ed25519 AAAA...yourkey... comment"
+
+  tasks:
+    - name: Install base packages
+      raw: |
+        apk update
+        apk add --no-cache python3 sudo
+      changed_when: true
+
+    - name: Ensure sshd is enabled and started
+      raw: |
+        rc-update add sshd default || true
+        rc-service sshd restart || rc-service sshd start
+      changed_when: true
+
+    - name: Create admin user if missing
+      raw: |
+        id {{ admin_user }} >/dev/null 2>&1 || adduser -D -s /bin/ash {{ admin_user }}
+      changed_when: true
+
+    - name: Add admin user to wheel group
+      raw: |
+        addgroup {{ admin_user }} wheel 2>/dev/null || true
+      changed_when: true
+
+    - name: Create sudoers rule for wheel group
+      raw: |
+        printf '%s\n' '%wheel ALL=(ALL:ALL) ALL' > /etc/sudoers.d/wheel
+        chmod 440 /etc/sudoers.d/wheel
+      changed_when: true
+
+    - name: Create SSH directory
+      raw: |
+        install -d -m 700 -o {{ admin_user }} -g {{ admin_user }} /home/{{ admin_user }}/.ssh
+      changed_when: true
+
+    - name: Install authorized key
+      raw: |
+        printf '%s\n' '{{ admin_pubkey }}' > /home/{{ admin_user }}/.ssh/authorized_keys
+        chown {{ admin_user }}:{{ admin_user }} /home/{{ admin_user }}/.ssh/authorized_keys
+        chmod 600 /home/{{ admin_user }}/.ssh/authorized_keys
+      changed_when: true
+
+    - name: Harden sshd config
+      raw: |
+        sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+        sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
+        grep -q '^PubkeyAuthentication ' /etc/ssh/sshd_config || echo 'PubkeyAuthentication yes' >> /etc/ssh/sshd_config
+      changed_when: true
+
+    - name: Restart sshd
+      raw: |
+        rc-service sshd restart
+      changed_when: true

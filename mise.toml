@@ -1,0 +1,10 @@
+[settings]
+minimum_release_age = "7d"
+
+[env]
+_.python.venv = { path = "{{config_root}}/.venv", create = true }
+ANSIBLE_CONFIG = "{{config_root}}/ansible/ansible.cfg"
+
+[tools]
+"aqua:google/yamlfmt" = "0.21.0"
+"pypi:ansible/ansible" = "14.4.0"
