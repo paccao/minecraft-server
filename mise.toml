@@ -20,5 +20,12 @@ run = "ansible-galaxy collection install containers.podman community.sops"
 [tasks.bootstrap]
 run = "age-keygen -o {{config_root}}/keys/pi5-alpine-1.agekey"
 
+[tasks.format]
+run = "yamlfmt **/*.yaml"
+
+# mise generate git-pre-commit --write --task=pre-commit
+[tasks.pre-commit]
+run = { task = "format" }
+
 [hooks]
 postinstall = { task = "install-ansible-collections"}
