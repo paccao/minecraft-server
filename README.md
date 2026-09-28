@@ -16,6 +16,22 @@ Spin up the server with compose up, it will download the mods and configure the 
 podman compose up
 ```
 
+### Set up mise
+
+Install the [Mise](https://mise.jdx.dev/) and [Usage CLI](https://usage.jdx.dev/guide/getting-started#install-the-cli).
+
+```sh
+mise use -g usage@6.10.0
+```
+
+Then install the packages specified in `mise.toml`:
+
+```sh
+mise install --locked
+```
+
+This project uses the mise setting `minimum_release_age = 7d` to help prevent supply chain attacks. If your install fails, you might have to look for an older version to install.
+
 ## Backups
 
 Are taken automatically with simple backups. They are stored as a zip in `<data-dir>/simplebackups/<LEVEL>/`

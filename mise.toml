@@ -7,4 +7,7 @@ ANSIBLE_CONFIG = "{{config_root}}/ansible/ansible.cfg"
 
 [tools]
 "aqua:google/yamlfmt" = "0.21.0"
-"pypi:ansible/ansible" = "14.4.0"
+python = "3.14"
+uv = "0.12.17"
+"pypi:black" = "26.5.1"
+ansible = "14.4.0"
