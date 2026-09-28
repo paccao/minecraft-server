@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/miiyakumo/sops/fb89aeaae6d1bc8cecab27d636f1650029702b39/schema/sops.json
+creation_rules:
+  - path_regex: .*.agekey
+    mac_only_encrypted: true
+    key_groups:
+      - age:
+          - "age1mc0l2tmwmgj8gxp8pcfzlsrhrjtxj86sxhz76djje28elq97442qfr6zlf"
+stores:
+  yaml:
+    indent: 2
