@@ -10,4 +10,10 @@ ANSIBLE_CONFIG = "{{config_root}}/ansible/ansible.cfg"
 python = "3.14"
 uv = "0.12.17"
 "pypi:black" = "26.5.1"
-ansible = "14.4.0"
+"pypi:ansible-core" = "2.21.4"
+
+[tasks.install-ansible-collections]
+run = "ansible-galaxy collection install containers.podman community.sops"
+
+[hooks]
+postinstall = { task = "install-ansible-collections"}
