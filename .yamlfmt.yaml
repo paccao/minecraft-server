@@ -1,0 +1,5 @@
+exclude: ["data-v2", mc-data]
+line_ending: lf
+formatter:
+  type: basic
+  include_document_start: true
