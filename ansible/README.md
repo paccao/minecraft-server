@@ -39,6 +39,18 @@ Host pi5-alpine-1
 
 ## Run the bootstrap playbook
 
+First time run, add the `--tags known_hosts` to the command below to set up known_hosts.
+
+If you run with that flag multiple times, it will append the pub key to known hosts each run.
+
+**FIRST RUN:**
+
+```sh
+ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml -i ansible/inventory.ini --user root --tags setup_known_hosts
+```
+
+**CONSECUTIVE RUNS:**
+
 ```sh
 ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml -i ansible/inventory.ini --user root
 ```

@@ -13,37 +13,43 @@
 
   tasks:
     - ansible.builtin.command: ssh-keyscan -t ed25519 pi5-alpine-1
-      register: hostkey
       changed_when: false
+      register: hostkey
       delegate_to: localhost
+      tags: setup_known_hosts
+      when: "'setup_known_hosts' in ansible_run_tags"
 
     - ansible.builtin.known_hosts:
         path: "{{ lookup('env', 'HOME') }}/.ssh/known_hosts"
         name: pi5-alpine-1
         key: "{{ hostkey.stdout }}"
       delegate_to: localhost
+      tags: setup_known_hosts
+      when: "'setup_known_hosts' in ansible_run_tags"
 
     - ansible.builtin.include_role:
         name: setup-ansible
         apply:
+          tags: setup_known_hosts
           become: true
+      tags: setup_known_hosts
 
-# -
-#
-#     - name: Create mc-server admin user
-#       ansible.builtin.user:
-#         name: "{{ admin_user }}"
-#         state: present
-#         create_home: true
-#         shell: /bin/ash
-#       register: admin_created
-#
-#     - name: Set password only if user was created
-#       ansible.builtin.shell: "echo {{ admin_user }}:{{ admin_password }} | chpasswd"
-#       when: admin_created.changed
-#       no_log: true
+  # -
+  #
+  #     - name: Create mc-server admin user
+  #       ansible.builtin.user:
+  #         name: "{{ admin_user }}"
+  #         state: present
+  #         create_home: true
+  #         shell: /bin/ash
+  #       register: admin_created
+  #
+  #     - name: Set password only if user was created
+  #       ansible.builtin.shell: "echo {{ admin_user }}:{{ admin_password }} | chpasswd"
+  #       when: admin_created.changed
+  #       no_log: true
 
-    # - name: Restart sshd
-    #   raw: |
-    #     rc-service sshd restart
-    #   changed_when: true
+  # - name: Restart sshd
+  #   raw: |
+  #     rc-service sshd restart
+  #   changed_when: true
