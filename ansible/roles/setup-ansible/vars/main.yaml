@@ -1,2 +1,2 @@
-ansible_user: ansible
-admin_pubkey: "{{ lookup('file', 'keys/pi5-alpine-1.pub') }}"
+future_ansible_user: ansible
+future_ansible_user_password: "{{ ansible_user_password }}"
