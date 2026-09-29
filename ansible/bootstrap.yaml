@@ -14,6 +14,10 @@
     admin_password: "{{ minecraft_user_password }}"
 
   tasks:
+    - ansible.builtin.role:
+        name: setup-ansible
+      become: true
+
     - name: Create mc-server admin user
       ansible.builtin.user:
         name: "{{ admin_user }}"
