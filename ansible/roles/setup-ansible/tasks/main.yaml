@@ -7,7 +7,7 @@
 
 - name: Create ansible user if missing
   ansible.builtin.user:
-    name: ansible_user
+    name: "{{ ansible_user }}"
     state: present
     create_home: true
     shell: /bin/ash
@@ -16,7 +16,7 @@
   register: user_created
 
 - name: Set password only if user was created
-  ansible.builtin.shell: "echo '{{ ansible_user }}:{{ ansible_user_password }} | chpasswd'"
+  ansible.builtin.shell: "echo '{{ ansible_user }}:{{ ansible_user_password }}' | chpasswd"
   when: user_created.changed
   no_log: true
 
@@ -25,5 +25,11 @@
     state: directory
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
-    mode: "0644"
+    mode: "0700"
     path: "/home/{{ ansible_user }}/.ssh"
+
+- name: Set up SSH key on remote
+  ansible.posix.authorized_key:
+    user: "{{ ansible_user }}"
+    state: present
+    key: "{{ lookup('file', 'keys/pi5-alpine-1.pub') }}"
