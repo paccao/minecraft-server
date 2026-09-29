@@ -30,9 +30,7 @@
     - ansible.builtin.include_role:
         name: setup-ansible
         apply:
-          tags: setup_known_hosts
           become: true
-      tags: setup_known_hosts
 
   # -
   #
