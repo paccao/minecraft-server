@@ -1,0 +1,29 @@
+---
+- name: Install base packages
+  raw: |
+    apk update
+    apk add --no-cache python3
+  changed_when: true
+
+- name: Create ansible user if missing
+  ansible.builtin.user:
+    name: ansible_user
+    state: present
+    create_home: true
+    shell: /bin/ash
+    groups: wheel
+    append: true
+  register: user_created
+
+- name: Set password only if user was created
+  ansible.builtin.shell: "echo '{{ ansible_user }}:{{ ansible_user_password }} | chpasswd'"
+  when: user_created.changed
+  no_log: true
+
+- name: Create SSH directory
+  ansible.builtin.file:
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0644"
+    path: "/home/{{ ansible_user }}/.ssh"
