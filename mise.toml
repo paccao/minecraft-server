@@ -15,7 +15,7 @@ uv = "0.12.17"
 "aqua:getsops/sops" = "3.13.3"
 
 [tasks.install-ansible-collections]
-run = "ansible-galaxy collection install containers.podman community.sops"
+run = "ansible-galaxy collection install containers.podman ansible.posix"
 
 [tasks.bootstrap]
 run = "age-keygen -o {{config_root}}/keys/pi5-alpine-1.agekey"

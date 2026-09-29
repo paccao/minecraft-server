@@ -140,13 +140,13 @@ url_api = "https://api.github.com/repos/google/yamlfmt/releases/assets/336650206
 version = "2.21.4"
 backend = "pypi:ansible-core"
 specifiers = ["2.21.4"]
-uv = { path = ".mise/locks/pypi-ansible-core/2.21.4", digest = "sha256:3108945020ad6200a2c357e820b8d88250076eb6faa9abf462074ba2cd27f0a7" }
+uv = { path = ".mise/locks/pypi-ansible-core/2.21.4", digest = "sha256:eb79702f6565a82b3ac2b3bee839acbbf9614923645d5762f35fd0eeae12b12b" }
 
 [[tools."pypi:black"]]
 version = "26.5.1"
 backend = "pypi:black"
 specifiers = ["26.5.1"]
-uv = { path = ".mise/locks/pypi-black/26.5.1", digest = "sha256:4adb94e4fef3f0c49a012273f0b6d60757bd3121b8fa0f46c08079c1b4fe631e" }
+uv = { path = ".mise/locks/pypi-black/26.5.1", digest = "sha256:b6bad833422b8a0a1566620da7f27566db4df877b8114788ce4038ece0cfca9e" }
 
 [[tools.python]]
 version = "3.14.7"
