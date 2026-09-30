@@ -1,0 +1,11 @@
+---
+- name: Install git
+  ansible.builtin.package:
+    name: "git"
+    state: present
+
+- name: Clone repo onto server
+  ansible.builtin.git:
+    repo: 'https://github.com/paccao/minecraft-server.git'
+    dest: /home/minecraft
+    update: true

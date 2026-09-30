@@ -1,2 +1,3 @@
+---
 future_ansible_user: ansible
 future_ansible_user_password: "{{ ansible_user_password }}"
