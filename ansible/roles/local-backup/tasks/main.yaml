@@ -1,0 +1,36 @@
+---
+- ansible.builtin.file:
+    state: directory
+    path: "/home/plum/c/minecraft-server/tmp_backup_test/ansible_{{ now(fmt='%Y-%m-%d %H:%M') }}"
+  register: tempfile
+
+- name: Take a local full snapshot of the data dir
+  community.general.archive:
+    path: "{{ local_path }}/{{ data_dir }}"
+    exclude_path:
+      - "*simplebackups/"
+    # dest: "{{ local_path }}/{{ backup_dir }}/{{ data_dir }}_{{ now() }}.zip"
+    dest: "{{ tempfile.path }}/{{ data_dir }}_{{ now(fmt='%Y-%m-%d %H:%M') }}.zip"
+    owner: "plum"
+    group: "plum"
+    # mode: # (I think) It should preserve permissions here even when unspecified. Docs: https://docs.ansible.com/projects/ansible/latest/collections/community/general/archive_module.html#parameter-mode
+    remove: false
+    format: zip
+  delegate_to: localhost
+  ignore_errors: true
+
+- name: Copy simplebackups .zip files to backups dir
+  ansible.builtin.copy:
+    src: "{{ local_path }}/{{ data_dir }}/{{ backup_mod_path }}/{{ minecraft_level_name }}/"
+    # dest: "{{ destination_path }}/"
+    dest: "{{ tempfile.path }}/"
+    owner: "plum"
+    group: "plum"
+    mode: preserve
+  delegate_to: localhost
+
+# - name: Delete tempfile
+#   ansible.builtin.file:
+#     path: "{{ tempfile.path }}"
+#     state: absent
+#   when: tempfile.path is defined

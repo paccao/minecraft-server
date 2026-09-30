@@ -1,0 +1,6 @@
+---
+local_path: "/home/plum/c/minecraft-server"
+data_dir: "data-v2"
+backup_dir: "backups"
+backup_mod_path: "simplebackups"
+minecraft_level_name: "pacpack" # Needs to match value in docker-compose file

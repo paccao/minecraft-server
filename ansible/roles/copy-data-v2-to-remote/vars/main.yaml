@@ -1,0 +1,4 @@
+---
+local_src: "/home/plum/c/minecraft-server/data-v2"
+destination_path: "/home/minecraft/minecraft-server"
+minecraft_user: "minecraft"

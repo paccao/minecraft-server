@@ -1,0 +1,26 @@
+---
+- name: Install packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "podman"
+    - "iptables"
+
+- name: Enable cgroups service # Required for non-root podman
+  ansible.builtin.service:
+    name: cgroups
+    enabled: true
+    state: started
+
+- name: Enable podman service
+  ansible.builtin.service:
+    name: podman
+    enabled: true
+    state: started
+
+# Might need to run these commands for podman to work in rootless mode
+# modprobe tun
+# echo tun >>/etc/modules
+# echo <USER>:100000:65536 >/etc/subuid
+# echo <USER>:100000:65536 >/etc/subgid

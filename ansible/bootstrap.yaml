@@ -1,7 +1,7 @@
 ---
 - name: Bootstrap Alpine server
   hosts: pi5-alpine-1
-  gather_facts: false
+  gather_facts: true
   become_user: root
   become_method: doas
   vars_files:
@@ -44,3 +44,8 @@
       ansible.builtin.shell: "echo {{ minecraft_user }}:{{ minecraft_user_pass }} | chpasswd"
       when: admin_created.changed
       no_log: true
+
+    - ansible.builtin.include_role:
+        name: setup-podman
+        apply:
+          become: true
