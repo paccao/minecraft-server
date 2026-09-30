@@ -4,6 +4,7 @@ minimum_release_age = "7d"
 [env]
 _.python.venv = { path = "{{config_root}}/.venv", create = true }
 ANSIBLE_CONFIG = "{{config_root}}/ansible/ansible.cfg"
+SOPS_AGE_KEY_FILE = "{{config_root}}/ansible/keys/pi5-alpine-1.agekey"
 
 [tools]
 "aqua:google/yamlfmt" = "0.21.0"
