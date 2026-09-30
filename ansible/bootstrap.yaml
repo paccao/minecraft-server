@@ -7,9 +7,9 @@
   vars_files:
     - vault.yaml.encrypted
 
-  # vars:
-  #   admin_user: minecraft
-  #   admin_password: "{{ minecraft_user_password }}"
+  vars:
+    minecraft_user: minecraft
+    minecraft_user_pass: "{{ minecraft_user_password }}"
 
   tasks:
     - ansible.builtin.command: ssh-keyscan -t ed25519 pi5-alpine-1
@@ -32,22 +32,15 @@
         apply:
           become: true
 
-  # -
-  #
-  #     - name: Create mc-server admin user
-  #       ansible.builtin.user:
-  #         name: "{{ admin_user }}"
-  #         state: present
-  #         create_home: true
-  #         shell: /bin/ash
-  #       register: admin_created
-  #
-  #     - name: Set password only if user was created
-  #       ansible.builtin.shell: "echo {{ admin_user }}:{{ admin_password }} | chpasswd"
-  #       when: admin_created.changed
-  #       no_log: true
+    - name: Create mc-server admin user
+      ansible.builtin.user:
+        name: "{{ minecraft_user }}"
+        state: present
+        create_home: true
+        shell: /bin/ash
+      register: admin_created
 
-  # - name: Restart sshd
-  #   raw: |
-  #     rc-service sshd restart
-  #   changed_when: true
+    - name: Set password if user was created
+      ansible.builtin.shell: "echo {{ minecraft_user }}:{{ minecraft_user_pass }} | chpasswd"
+      when: admin_created.changed
+      no_log: true

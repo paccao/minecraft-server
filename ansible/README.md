@@ -49,7 +49,7 @@ If you run with that flag multiple times, it will append the pub key to known ho
 ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml -i ansible/inventory.ini --user root --tags setup_known_hosts
 ```
 
-**CONSECUTIVE RUNS:**
+If you need to reconfigure something, run without the tags:
 
 ```sh
 ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml -i ansible/inventory.ini --user root
@@ -60,3 +60,5 @@ Remember that:
 `--ask-pass` = SSH user password
 
 `--ask-become-pass` = doas password
+
+## Run the mc-server playbook
