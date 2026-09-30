@@ -8,17 +8,12 @@
 - name: Create ansible user if missing
   ansible.builtin.user:
     name: "{{ future_ansible_user }}"
+    password: "{{ future_ansible_user_password }}"
     state: present
     create_home: true
     shell: /bin/ash
     groups: wheel
     append: true
-  register: user_created
-
-- name: Set password only if user was created
-  ansible.builtin.shell: "echo '{{ future_ansible_user }}:{{ future_ansible_user_password }}' | chpasswd"
-  when: user_created.changed
-  no_log: true
 
 - name: Create SSH directory
   ansible.builtin.file:
