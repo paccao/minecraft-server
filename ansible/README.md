@@ -61,7 +61,31 @@ Remember that:
 
 `--ask-become-pass` = doas password
 
-## Run the mc-server playbook
+## Init the minecraft server
+
+First add your ssh key to the ssh-agent
+
+```fish
+# Fish shell
+eval (ssh-agent -c)
+# Or bash shell:
+# eval "$(ssh-agent -s)"
+ssh-add <path_to_private_key>
+```
+
+Then run the init-playbook. This is a one-time setup type of playbook. It sets up the git-repo, the minecraft user and copies over the data from your local host to the remote server.
+
+```sh
+ansible-playbook ansible/init-mcserver.yaml --ask-pass --ask-become-pass --ask-vault-pass
+```
+
+If you have a minecraft server already on your local machine (in this git repo), add the following tag:
+
+```sh
+---tags with_copy_data # Optional, if you dont have a minecraft server already on your local machine - skip this step.
+```
+
+If you dont have a server locally, you can just create a new server from a `.mrpack` file you supply in the compose values.
 
 ## Backups
 
