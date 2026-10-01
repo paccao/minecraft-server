@@ -46,13 +46,13 @@ If you run with that flag multiple times, it will append the pub key to known ho
 **FIRST RUN:**
 
 ```sh
-ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml -i ansible/inventory.ini --user root --tags setup_known_hosts
+ansible-playbook --ask-pass --ask-vault-pass ansible/plays/bootstrap.yaml -i ansible/inventory.ini --user root --tags setup_known_hosts
 ```
 
 If you need to reconfigure something, run without the tags:
 
 ```sh
-ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml -i ansible/inventory.ini --user root
+ansible-playbook --ask-pass --ask-vault-pass ansible/plays/bootstrap.yaml -i ansible/inventory.ini --user root
 ```
 
 Remember that:
@@ -62,3 +62,15 @@ Remember that:
 `--ask-become-pass` = doas password
 
 ## Run the mc-server playbook
+
+## Backups
+
+Run the backup playbook. 
+
+#### Localhost backup
+
+```sh
+ansible-playbook --ask-become-pass ansible/plays/local-backup.yaml
+```
+
+It requires sudo in order for rsync to be able to keep the ownership on the files that are copied, podman creates the mounted files with a special user and group id, 100999.
