@@ -32,14 +32,6 @@
         apply:
           become: true
 
-    - name: Create mc-server admin user
-      ansible.builtin.user:
-        name: "{{ minecraft_user }}"
-        password: "{{ minecraft_user_pass }}"
-        state: present
-        create_home: true
-        shell: /bin/ash
-
     - ansible.builtin.include_role:
         name: setup-podman
         apply:
