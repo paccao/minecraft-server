@@ -70,7 +70,13 @@ Run the backup playbook.
 #### Localhost backup
 
 ```sh
-ansible-playbook --ask-become-pass ansible/plays/local-backup.yaml
+ansible-playbook --ask-become-pass ansible/plays/local-backup.yaml --tags <options>
 ```
 
 It requires sudo in order for rsync to be able to keep the ownership on the files that are copied, podman creates the mounted files with a special user and group id, 100999.
+
+It has three tags:
+
+- **full_backup** (`all` also works)
+- **partial_datadir** (full server snapshot excluding simplebackups, default `data-v2/`).
+- **sb_only** (only takes backups of the `simplebackup .zip files`)
