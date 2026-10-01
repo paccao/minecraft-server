@@ -1,4 +1,10 @@
 ---
+- name: Enable alpine community repositories
+  ansible.builtin.template:
+    src: repositories.j2
+    dest: /etc/apk/repositories
+    mode: "0644"
+
 - name: Install packages
   ansible.builtin.package:
     name: "{{ item }}"
@@ -13,14 +19,15 @@
     enabled: true
     state: started
 
+- name: Enable tun kernel module and set ansible user subuid and subgid
+  raw: |
+    modprobe tun
+    echo tun >>/etc/modules
+    echo {{ future_ansible_user }}:100000:65536 >/etc/subuid
+    echo {{ future_ansible_user }}:100000:65536 >/etc/subgid
+
 - name: Enable podman service
   ansible.builtin.service:
     name: podman
     enabled: true
     state: started
-
-# Might need to run these commands for podman to work in rootless mode
-# modprobe tun
-# echo tun >>/etc/modules
-# echo <USER>:100000:65536 >/etc/subuid
-# echo <USER>:100000:65536 >/etc/subgid
