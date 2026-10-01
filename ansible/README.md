@@ -83,3 +83,11 @@ It has two tags **options**:
 --tags full_backup # `all` also works
 --tags partial_datadir # full server snapshot excluding simplebackups, default `data-v2/`
 ```
+
+#### Full sync of remote data to localhost
+
+```sh
+ansible-playbook --ask-become-pass ansible/remote-to-local-backup.yaml
+```
+
+It requires sudo in order for rsync to be able to keep the ownership on the files that are copied, podman creates the mounted files with a special user and group id, 100999.

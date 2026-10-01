@@ -1,0 +1,26 @@
+---
+- name: Create backup dir
+  ansible.builtin.file:
+    state: directory
+    path: "{{ local_project_path }}/{{ backup_dir }}/remote"
+    owner: 100999
+    group: 100999
+    mode: 0755
+  become: true
+  tags: always
+
+# Host context is still the remote alpine host, but it runs locally with pull mode instead of push mode.
+- name: Full sync of remote to localhost
+  ansible.posix.synchronize:
+    mode: pull
+    src: "{{ project_path }}/{{ data_dir }}/"
+    # stored in backups/
+    dest: "{{ local_project_path }}/{{ backup_dir }}/remote/{{ data_dir }}_{{ now(fmt='%Y-%m-%d %H:%M') }}/"
+    dirs: true
+    archive: true
+    perms: true
+    owner: true
+    group: true
+    rsync_opts:
+      - "--numeric-ids"
+  become: true
