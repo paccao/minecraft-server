@@ -40,11 +40,6 @@
         create_home: true
         shell: /bin/ash
 
-    - name: Set password if user was created
-      ansible.builtin.shell: "echo {{ minecraft_user }}:{{ minecraft_user_pass }} | chpasswd"
-      when: admin_created.changed
-      no_log: true
-
     - ansible.builtin.include_role:
         name: setup-podman
         apply:
