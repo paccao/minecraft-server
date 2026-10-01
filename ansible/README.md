@@ -75,7 +75,7 @@ ansible-playbook --ask-become-pass ansible/plays/local-backup.yaml --tags <optio
 
 It requires sudo in order for rsync to be able to keep the ownership on the files that are copied, podman creates the mounted files with a special user and group id, 100999.
 
-It has three tags:
+It has three **options**:
 
 - **full_backup** (`all` also works)
 - **partial_datadir** (full server snapshot excluding simplebackups, default `data-v2/`).
