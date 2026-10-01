@@ -9,10 +9,8 @@
         name: backup
         apply:
           tags:
-            - sb_only
             - partial_datadir
             - full_backup
       tags:
-        - sb_only
         - partial_datadir
         - full_backup
