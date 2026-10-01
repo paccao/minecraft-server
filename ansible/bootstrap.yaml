@@ -1,7 +1,7 @@
 ---
 - name: Bootstrap Alpine server
   hosts: pi5-alpine-1
-  gather_facts: true
+  gather_facts: false
   become_user: root
   become_method: doas
   vars_files:
@@ -35,10 +35,10 @@
     - name: Create mc-server admin user
       ansible.builtin.user:
         name: "{{ minecraft_user }}"
+        password: "{{ minecraft_user_pass }}"
         state: present
         create_home: true
         shell: /bin/ash
-      register: admin_created
 
     - name: Set password if user was created
       ansible.builtin.shell: "echo {{ minecraft_user }}:{{ minecraft_user_pass }} | chpasswd"
