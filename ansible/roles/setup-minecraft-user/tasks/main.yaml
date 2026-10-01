@@ -1,5 +1,5 @@
 ---
-- name: Create ansible user if missing
+- name: Create minecraft user if missing
   ansible.builtin.user:
     name: "{{ minecraft_user }}"
     state: present
@@ -7,3 +7,4 @@
     shell: /bin/ash
     append: true
     password: "{{ minecraft_user_password }}"
+  become: true

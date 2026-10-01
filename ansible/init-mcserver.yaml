@@ -1,0 +1,45 @@
+---
+- name: Set up minecraft server
+  hosts: alpine
+  ansible_user: ansible
+  vars:
+    minecraft_user: "minecraft" # Needs to match setup-minecraft-user vars
+    git_repo_name: "minecraft-server" # Needs to match setup-git-repo vars
+    project_path: "/home/{{ minecraft_user }}/{{ git_repo_name }}"
+    local_project_path: "/home/plum/{{ git_repo_name }}"
+
+  vars_files:
+    - vault.yaml.encrypted
+
+  tasks:
+    # Set up git repo
+    - block:
+        - name: Check whether repo directory exists
+          ansible.builtin.stat:
+            path: "{{ project_path }}"
+          register: repo_dir
+
+        - name: Set up git repo if it doesn't exist
+          ansible.builtin.include_role:
+            name: setup-git-repo
+          when: not repo_dir.stat.exists
+
+        - name: Re-check repo directory
+          ansible.builtin.stat:
+            path: "{{ project_path }}"
+          register: repo_dir_after
+
+        - name: Crash if git repo is still not set up properly
+          ansible.builtin.assert:
+            that:
+              - repo_dir_after.stat.exists
+              - repo_dir_after.stat.isdir
+            fail_msg: "Git repo is not set up properly at {{ project_path }}"
+
+    # first time mc-server setup
+    - block:
+        - ansible.builtin.include_role:
+            name: setup-minecraft-user
+
+      # - ansible.builtin.include_role:
+      #     name: copy-data-v2-to-remote

@@ -3,10 +3,11 @@
   ansible.builtin.package:
     name: "git"
     state: present
+  become: true
 
 - name: Clone repo onto server
   ansible.builtin.git:
-    repo: 'https://github.com/paccao/minecraft-server.git'
-    dest: /home/minecraft/
+    repo: "https://github.com/paccao/minecraft-server.git"
+    dest: "/home/{{ minecraft_user }}/"
     update: true
     clone: true
