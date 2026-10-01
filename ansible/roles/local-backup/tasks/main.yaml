@@ -1,10 +1,21 @@
 ---
-- name: Take a local backup
+- name: Create backup dir
+  ansible.builtin.file:
+    state: directory
+    path: "{{ local_path }}/{{ backup_dir }}"
+    owner: 100999
+    group: 100999
+    mode: 0755
+  delegate_to: localhost
+  become: true
+  tags: always
+
+- name: Partial datadir backup
   ansible.posix.synchronize:
     src: "{{ local_path }}/{{ data_dir }}/"
     # stored in backups/
-    # dest: "{{ local_path }}/{{ backup_dir }}/{{ data_dir }}_{{ now(fmt='%Y-%m-%d %H:%M') }}"
-    dest: "{{ local_path }}/tmp_backup_test/{{ data_dir }}_{{ now(fmt='%Y-%m-%d %H:%M') }}"
+    dest: "{{ local_path }}/{{ backup_dir }}/{{ data_dir }}_{{ now(fmt='%Y-%m-%d %H:%M') }}/"
+    dirs: true
     archive: true
     perms: true
     owner: true
@@ -14,3 +25,24 @@
       - "--exclude={{ backup_mod_path }}/**/*.zip"
   delegate_to: localhost
   become: true
+  when:
+    - "'partial_datadir' in ansible_run_tags or 'full_backup' in ansible_run_tags"
+    - "'simplebackups' not in ansible_run_tags"
+
+- name: Local simplebackups zip files
+  ansible.posix.synchronize:
+    src: "{{ local_path }}/{{ data_dir }}/{{ backup_mod_path }}/{{ minecraft_level_name }}/"
+    # stored in backups/
+    dest: "{{ local_path }}/{{ backup_dir }}/"
+    dirs: true
+    archive: true
+    perms: true
+    owner: true
+    group: true
+    rsync_opts:
+      - "--numeric-ids"
+  delegate_to: localhost
+  become: true
+  when:
+    - "'simplebackups' in ansible_run_tags or 'full_backup' in ansible_run_tags"
+    - "'partial_datadir' not in ansible_run_tags"
