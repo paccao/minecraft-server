@@ -9,7 +9,7 @@
   become: true
   tags: always
 
-- name: Partial datadir backup
+- name: Datadir backup
   ansible.posix.synchronize:
     src: "{{ project_path }}/{{ data_dir }}/"
     # stored in backups/
@@ -24,8 +24,7 @@
       - "--exclude={{ backup_mod_path }}/**/*.zip"
   become: true
   when:
-    - "'partial_datadir' in ansible_run_tags or 'full_backup' in ansible_run_tags"
-    - "'sb_only' not in ansible_run_tags"
+    - "'partial_datadir' in ansible_run_tags or 'full_backup' in ansible_run_tags or 'all' in ansible_run_tags"
 
 - name: Backup simplebackups zip files
   ansible.posix.synchronize:
@@ -41,5 +40,4 @@
       - "--numeric-ids"
   become: true
   when:
-    - "'sb_only' in ansible_run_tags or 'full_backup' in ansible_run_tags"
-    - "'partial_datadir' not in ansible_run_tags"
+    - "'partial_datadir' not in ansible_run_tags or 'full_backup' in ansible_run_tags or 'all' in ansible_run_tags"
