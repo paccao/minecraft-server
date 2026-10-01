@@ -1,9 +1,12 @@
 ---
-- hosts: localhost
-  tasks:
+- name: Local backup of minecraft server data
+  hosts: localhost
+  vars:
+    project_path: "/home/plum/c/minecraft-server"
 
+  tasks:
     - ansible.builtin.include_role:
-        name: local-backup
+        name: backup
         apply:
           tags:
             - simplebackups

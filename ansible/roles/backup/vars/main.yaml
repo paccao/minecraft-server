@@ -1,4 +1,5 @@
 ---
+# project_path: "/home/plum/c/minecraft-server"
 data_dir: "data-v2"
 backup_dir: "backups"
 backup_mod_path: "simplebackups"
