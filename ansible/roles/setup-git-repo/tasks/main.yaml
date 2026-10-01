@@ -4,6 +4,8 @@
     name: "git"
     state: present
   become: true
+  become_method: doas
+  become_user: ansible
 
 - name: Clone repo onto server
   ansible.builtin.git:

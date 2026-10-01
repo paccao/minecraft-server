@@ -6,3 +6,11 @@
     owner: "{{ minecraft_user }}"
     group: "{{ minecraft_user }}"
     mode: preserve
+
+# Todo: Skip simplebackups dir initially
+#
+# Todo: rsync one specific simplebackups .zip (bonus: only send latest .zip file by date)
+
+# Todo: change to rsync, its faster and more reliable with user permissions
+
+# Todo: test

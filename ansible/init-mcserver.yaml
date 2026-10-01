@@ -1,7 +1,10 @@
 ---
 - name: Set up minecraft server
   hosts: alpine
-  ansible_user: ansible
+  remote_user: ansible
+  become_method: doas
+  ansible_python_interpreter: /usr/bin/python3
+
   vars:
     minecraft_user: "minecraft" # Needs to match setup-minecraft-user vars
     git_repo_name: "minecraft-server" # Needs to match setup-git-repo vars
@@ -43,3 +46,8 @@
 
       # - ansible.builtin.include_role:
       #     name: copy-data-v2-to-remote
+      #     apply:
+      #       tags:
+      #         - with_copy_data
+      #   tags:
+      #     - with_copy_data

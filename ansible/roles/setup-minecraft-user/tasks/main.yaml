@@ -8,3 +8,4 @@
     append: true
     password: "{{ minecraft_user_password }}"
   become: true
+  become_method: doas
