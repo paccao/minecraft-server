@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  tasks:
+
+    - ansible.builtin.include_role:
+        name: local-backup
+        apply:
+          tags:
+            - simplebackups
+            - partial_datadir
+            - full_backup
+      tags:
+        - simplebackups
+        - partial_datadir
+        - full_backup

@@ -1,6 +1,0 @@
----
-- hosts: localhost
-  tasks:
-
-    - ansible.builtin.include_role:
-        name: local-backup
