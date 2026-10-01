@@ -2,6 +2,8 @@
 
 Documentation: https://docker-minecraft-server.readthedocs.io
 
+My [Ansible documentation](./ansible/README.md) for setting up the server on an Alpine linux VPS.
+
 Set up config easily with https://setupmc.com/java-server/
 
 Full modlist of `create-adventure-SMP-1.2.mrpack` is in [modlist.txt](modlist.txt), the mrpack is not stored in git because I dont know if it contains sensitive information or not.
