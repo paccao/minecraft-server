@@ -25,7 +25,7 @@
   become: true
   when:
     - "'partial_datadir' in ansible_run_tags or 'full_backup' in ansible_run_tags"
-    - "'simplebackups' not in ansible_run_tags"
+    - "'sb_only' not in ansible_run_tags"
 
 - name: Backup simplebackups zip files
   ansible.posix.synchronize:
@@ -41,5 +41,5 @@
       - "--numeric-ids"
   become: true
   when:
-    - "'simplebackups' in ansible_run_tags or 'full_backup' in ansible_run_tags"
+    - "'sb_only' in ansible_run_tags or 'full_backup' in ansible_run_tags"
     - "'partial_datadir' not in ansible_run_tags"
