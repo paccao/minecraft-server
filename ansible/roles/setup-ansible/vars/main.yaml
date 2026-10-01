@@ -1,3 +1,5 @@
 ---
 future_ansible_user: ansible
 future_ansible_user_password: "{{ ansible_user_password }}"
+local_project_path: "/home/plum/c/minecraft-server"
+remote_home: "/home/{{ future_ansible_user }}"

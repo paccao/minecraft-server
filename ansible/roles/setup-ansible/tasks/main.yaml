@@ -28,3 +28,14 @@
     user: "{{ future_ansible_user }}"
     state: present
     key: "{{ lookup('file', playbook_dir ~ '/keys/pi5-alpine-1.pub') }}"
+
+- name: copy ash config files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ remote_home }}/"
+    owner: "{{ future_ansible_user }}"
+    group: "{{ future_ansible_user }}"
+    mode: 0644
+  loop:
+    - ".ashrc"
+    - ".profile"
