@@ -1,0 +1,5 @@
+---
+data_dir: "data-v2"
+project_path: "/home/minecraft/minecraft-server"
+local_project_path: "/home/plum/c/minecraft-server"
+minecraft_user: "minecraft"

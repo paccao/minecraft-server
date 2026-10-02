@@ -1,0 +1,22 @@
+---
+- name: Copy local data onto server
+  ansible.posix.synchronize:
+    mode: push
+    src: "{{ local_project_path }}/{{ data_dir }}/"
+    # stored in backups/
+    dest: "{{ project_path }}/{{ data_dir }}/"
+    archive: true
+    perms: true
+    owner: true
+    group: true
+    rsync_opts:
+      - "--numeric-ids"
+      - "--exclude={{ backup_mod_path }}/**/*.zip"
+
+# Todo: Skip simplebackups dir initially
+#
+# Todo: rsync one specific simplebackups .zip (bonus: only send latest .zip file by date)
+
+# Todo: change to rsync, its faster and more reliable with user permissions
+
+# Todo: test
