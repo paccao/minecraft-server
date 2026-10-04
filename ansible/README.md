@@ -46,7 +46,7 @@ If you run with that flag multiple times, it will append the pub key to known ho
 **FIRST RUN:**
 
 ```sh
-ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml -i ansible/inventory.ini --user root --tags setup_known_hosts
+ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml --user root --tags with_known_hosts -vvv
 ```
 
 If you need to reconfigure something, run without the tags:

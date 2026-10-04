@@ -16,16 +16,16 @@
       changed_when: false
       register: hostkey
       delegate_to: localhost
-      tags: setup_known_hosts
-      when: "'setup_known_hosts' in ansible_run_tags"
+      tags: with_known_hosts
+      when: "'with_known_hosts' in ansible_run_tags"
 
     - ansible.builtin.known_hosts:
         path: "{{ lookup('env', 'HOME') }}/.ssh/known_hosts"
         name: pi5-alpine-1
         key: "{{ hostkey.stdout }}"
       delegate_to: localhost
-      tags: setup_known_hosts
-      when: "'setup_known_hosts' in ansible_run_tags"
+      tags: with_known_hosts
+      when: "'with_known_hosts' in ansible_run_tags"
 
     - ansible.builtin.include_role:
         name: setup-ansible
