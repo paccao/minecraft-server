@@ -1,0 +1,10 @@
+---
+- name: Set up cron jobs
+  hosts: pi5-alpine-1
+  gather_facts: false
+  become_user: root
+  become_method: doas
+
+  tasks:
+    - ansible.builtin.include_role:
+        name: setup-cron

@@ -52,7 +52,7 @@ ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml --user root 
 If you need to reconfigure something, run without the tags:
 
 ```sh
-ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml -i ansible/inventory.ini --user root
+ansible-playbook --ask-pass --ask-vault-pass ansible/bootstrap.yaml --user root
 ```
 
 Remember that:
@@ -86,6 +86,13 @@ If you have a minecraft server already on your local machine (in this git repo),
 ```
 
 If you dont have a server locally, you can just create a new server from a `.mrpack` file you supply in the compose values.
+
+## Set up automatic server restarts with cron
+
+
+```sh
+ansible-playbook --ask-pass ansible/setup-cron.yaml --user root
+```
 
 ## Backups
 
