@@ -2,8 +2,20 @@
 - name: Install base packages
   raw: |
     apk update
-    apk add --no-cache python3
+    apk add --no-cache python3 git rsync netbird cronie
   changed_when: true
+
+- name: Enable and start netbird
+  ansible.builtin.service:
+    name: netbird
+    enabled: true
+    state: started
+
+- name: Enable and start cron
+  ansible.builtin.service:
+    name: crond
+    enabled: true
+    state: started
 
 - name: Create ansible user if missing
   ansible.builtin.user:
@@ -14,6 +26,9 @@
     shell: /bin/ash
     groups: wheel
     append: true
+
+# - ansible.bultin.include_role:
+#     name: setup-minecraft-user
 
 - name: Create SSH directory
   ansible.builtin.file:

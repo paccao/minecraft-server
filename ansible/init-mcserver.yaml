@@ -3,7 +3,6 @@
   hosts: alpine
   remote_user: ansible
   become_method: doas
-  ansible_python_interpreter: /usr/bin/python3
 
   vars:
     minecraft_user: "ansible" # Needs to match setup-minecraft-user vars
@@ -15,8 +14,9 @@
     - vault.yaml.encrypted
 
   tasks:
-    # Set up git repo
-    - block:
+    - name: Set up git repo
+      when: "'with_copy_data' not in ansible_run_tags"
+      block:
         - name: Check whether repo directory exists
           ansible.builtin.stat:
             path: "{{ project_path }}"
@@ -39,15 +39,13 @@
               - repo_dir_after.stat.isdir
             fail_msg: "Git repo is not set up properly at {{ project_path }}"
 
+
     # first time mc-server setup
     - block:
         - ansible.builtin.include_role:
-            name: setup-minecraft-user
-
-      # - ansible.builtin.include_role:
-      #     name: copy-datadir-to-remote
-      #     apply:
-      #       tags:
-      #         - with_copy_data
-      #   tags:
-      #     - with_copy_data
+            name: copy-datadir-to-remote
+            apply:
+              tags:
+                - with_copy_data
+          tags:
+            - with_copy_data

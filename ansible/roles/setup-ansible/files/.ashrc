@@ -1,1 +1,2 @@
 alias l='ls -AlhF --group-directories-first --color=auto'
+alias tree='tree --metafirst --du -h -u -g --acl'
