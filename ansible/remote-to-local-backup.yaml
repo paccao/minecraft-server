@@ -2,7 +2,7 @@
 - name: Local backup of minecraft server data
   hosts: alpine
   vars:
-    minecraft_user: "minecraft" # Needs to match setup-minecraft-user vars
+    minecraft_user: "ansible" # Needs to match setup-minecraft-user vars
     git_repo_name: "minecraft-server" # Needs to match setup-git-repo vars
     project_path: "/home/{{ minecraft_user }}/{{ git_repo_name }}"
     local_project_path: "/home/plum/{{ git_repo_name }}"

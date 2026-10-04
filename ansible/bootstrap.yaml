@@ -8,7 +8,7 @@
     - vault.yaml.encrypted
 
   vars:
-    minecraft_user: minecraft
+    minecraft_user: ansible
     minecraft_user_pass: "{{ minecraft_user_password }}"
 
   tasks:
