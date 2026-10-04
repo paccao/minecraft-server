@@ -1,0 +1,24 @@
+- name: Ensure script directory exists
+  ansible.builtin.file:
+    path: /home/ansible/bin
+    state: directory
+    owner: ansible
+    group: ansible
+    mode: "0755"
+
+- name: Copy restart script
+  ansible.builtin.copy:
+    src: "restart-minecraft-server.ash"
+    dest: /home/ansible/bin/restart-minecraft-server.ash
+    owner: ansible
+    group: ansible
+    mode: "0755"
+
+- name: Install crontab for ansible user
+  ansible.builtin.copy:
+    dest: /etc/crontabs/ansible
+    owner: root
+    group: root
+    mode: "0600"
+    content: |
+      0 3,12 * * * /home/ansible/bin/restart-minecraft-server.ash >> /home/ansible/restart-minecraft-server.log 2>&1
