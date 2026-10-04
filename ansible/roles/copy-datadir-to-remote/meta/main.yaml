@@ -1,4 +1,3 @@
 ---
 dependencies:
   - "setup-git-repo"
-  - "setup-minecraft-user"

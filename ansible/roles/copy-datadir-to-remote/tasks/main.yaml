@@ -1,22 +1,37 @@
 ---
-- name: Copy local data onto server
+# - name: Copy local data onto server
+#   ansible.posix.synchronize:
+#     mode: push
+#     src: "{{ local_project_path }}/{{ data_dir }}/"
+#     # stored in backups/
+#     dest: "{{ project_path }}/{{ data_dir }}/"
+#     archive: true
+#     perms: true
+#     owner: true
+#     group: true
+#     rsync_opts:
+#       - "--numeric-ids"
+#       - "--exclude={{ backup_mod_path }}/**/*.zip"
+#       - "--exclude={{ mcserver_level_name }}/"
+
+- name: Copy backups onto server
   ansible.posix.synchronize:
     mode: push
-    src: "{{ local_project_path }}/{{ data_dir }}/"
+    src: "{{ local_project_path }}/{{ backups_dir }}/"
     # stored in backups/
-    dest: "{{ project_path }}/{{ data_dir }}/"
+    dest: "{{ project_path }}/{{ backups_dir }}"
     archive: true
     perms: true
     owner: true
     group: true
     rsync_opts:
       - "--numeric-ids"
-      - "--exclude={{ backup_mod_path }}/**/*.zip"
+      - "--exclude={{ backup_mod_path }}/data-v2*/"
 
-# Todo: Skip simplebackups dir initially
-#
-# Todo: rsync one specific simplebackups .zip (bonus: only send latest .zip file by date)
+- name: set correct podman numeric ownership
+  ansible.builtin.shell: "doas chown -R 100999:100999 {{ project_path }}/{{ backups_dir }}"
+  become: true
 
-# Todo: change to rsync, its faster and more reliable with user permissions
-
-# Todo: test
+- name: set correct podman numeric ownership
+  ansible.builtin.shell: "doas chown -R 100999:100999 {{ project_path }}/{{ data_dir }}"
+  become: true

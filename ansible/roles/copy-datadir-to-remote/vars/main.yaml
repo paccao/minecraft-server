@@ -1,5 +1,8 @@
 ---
 data_dir: "data-v2"
-project_path: "/home/minecraft/minecraft-server"
+backups_dir: "backups"
+backup_mod_path: "simplebackups"
+mcserver_level_name: "pacpack"
+project_path: "/home/ansible/minecraft-server"
 local_project_path: "/home/plum/c/minecraft-server"
-minecraft_user: "minecraft"
+minecraft_user: "ansible"
