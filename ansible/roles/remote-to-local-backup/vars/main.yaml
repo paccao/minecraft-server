@@ -1,5 +1,5 @@
 ---
-# project_path: "/home/minecraft/minecraft-server"
+# project_path: "/home/ansible/minecraft-server"
 # local_project_path: "/home/plum/c/minecraft-server"
 data_dir: "data-v2"
 backup_dir: "backups"
