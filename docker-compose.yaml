@@ -20,15 +20,15 @@ services:
         https://cdn.modrinth.com/data/h6BAXuvn/versions/cfugvAt6/fxntstorage-1.3.8%2Bmc-1.21.1-neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
       MODRINTH_EXCLUDE_FILES: |
         DistantHorizons-3.2.0-b-1.21.1-fabric-neoforge.jar
-      MEMORY: "20480M"
-      MAX_MEMORY: "24576M"
-      MAX_PLAYERS: "5"
-      MOTD: "§6gaming"
+      MEMORY: "13000M"
+      MAX_MEMORY: "14000M"
+      MAX_PLAYERS: "7"
+      MOTD: "gaming"
       ONLINE_MODE: "false"
       USE_MEOWICE_FLAGS: "true"
       TZ: "Europe/Stockholm"
       DIFFICULTY: "2"
-      SIMULATION_DISTANCE: "10"
+      SIMULATION_DISTANCE: "9"
       VIEW_DISTANCE: "10"
       LEVEL: "pacpack"
       WORLD: "/backups/pacpack_2026-09-23_23-22-13.zip"
