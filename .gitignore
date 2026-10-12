@@ -6,7 +6,8 @@
 !mc-data
 !*.mrpack
 !docker-compose-1.0.0.yaml
-!docker-compose-v1.2.yaml
+!docker-compose-1.2.yaml
+!docker-compose-1.2.1.yaml
 !docker-compose.yaml
 !data-v2
 !backups

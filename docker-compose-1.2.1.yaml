@@ -1,0 +1,45 @@
+---
+services:
+  mc:
+    image: itzg/minecraft-server:stable-java21
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+      - "24454:24454/udp"
+    environment:
+      EULA: "TRUE"
+      TYPE: "MODRINTH"
+      VERSION: "1.21.1"
+      MODRINTH_MODPACK: /modpacks/create-adventure-SMP-1.2.mrpack
+      MODS: |
+        https://cdn.modrinth.com/data/XlUm5I57/versions/ZCRHabJE/icys-better-horses-2.0.0-1.21.1-neo.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/692GClaE/versions/jH6bsw4F/modonomicon-1.21.1-neoforge-1.120.4.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/uCdwusMi/versions/9w34y8ai/DistantHorizons-3.3.3-1.21.1-fabric-neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/h2jXvxNR/versions/XPFBF0Tm/starcatcher-3.3.6-NEOFORGE-1.21.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/h6BAXuvn/versions/cfugvAt6/fxntstorage-1.3.8%2Bmc-1.21.1-neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+      MODRINTH_EXCLUDE_FILES: |
+        DistantHorizons-3.2.0-b-1.21.1-fabric-neoforge.jar
+      MEMORY: "20480M"
+      MAX_MEMORY: "24576M"
+      MAX_PLAYERS: "5"
+      MOTD: "§6gaming"
+      ONLINE_MODE: "false"
+      USE_MEOWICE_FLAGS: "true"
+      TZ: "Europe/Stockholm"
+      DIFFICULTY: "2"
+      SIMULATION_DISTANCE: "10"
+      VIEW_DISTANCE: "10"
+      LEVEL: "pacpack"
+      WORLD: "/backups/pacpack_2026-09-23_23-22-13.zip"
+      SPAWN_PROTECTION: "0"
+      RATE_LIMIT: "0"
+      ENFORCE_SECURE_PROFILE: "false"
+      STATUS_HEARTBEAT_INTERVAL: "60000"
+      ALLOW_FLIGHT: "true"
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: "true"
+      SERVER_NAME: "paccao's server"
+    volumes:
+      - "./data-v2:/data:U"
+      - ./modpacks:/modpacks:ro
+      - ./backups:/backups:ro
