@@ -15,6 +15,11 @@ services:
       MODS: |
         https://cdn.modrinth.com/data/XlUm5I57/versions/ZCRHabJE/icys-better-horses-2.0.0-1.21.1-neo.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
         https://cdn.modrinth.com/data/692GClaE/versions/jH6bsw4F/modonomicon-1.21.1-neoforge-1.120.4.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/uCdwusMi/versions/9w34y8ai/DistantHorizons-3.3.3-1.21.1-fabric-neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/h2jXvxNR/versions/XPFBF0Tm/starcatcher-3.3.6-NEOFORGE-1.21.1.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+        https://cdn.modrinth.com/data/h6BAXuvn/versions/cfugvAt6/fxntstorage-1.3.8%2Bmc-1.21.1-neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
+      MODRINTH_EXCLUDE_FILES: |
+        DistantHorizons-3.2.0-b-1.21.1-fabric-neoforge.jar
       MEMORY: "20480M"
       MAX_MEMORY: "24576M"
       MAX_PLAYERS: "5"
