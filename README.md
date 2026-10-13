@@ -42,6 +42,12 @@ Are taken automatically with simple backups. They are stored as a zip in `<data-
 
 `<LEVEL>` should match the value of the var `LEVEL` in the compose file.
 
+### Copy over backups manually from server to localhost
+
+```sh
+sudo scp -r root@pi5-alpine-1:/home/ansible/minecraft-server/data-v2/simplebackups/pacpack/ ./backups/ && chown -R 100999:100999 backups
+```
+
 ## Restore backups / create server from a backup
 
 If the mounted data path is empty, the server will either create a new save file. But if the `WORLD` variable is defined, it will create the server based on that backup.
