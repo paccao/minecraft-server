@@ -2,6 +2,7 @@
 services:
   mc:
     image: itzg/minecraft-server:stable-java21
+    restart: unless-stopped
     tty: true
     stdin_open: true
     ports:
@@ -20,9 +21,9 @@ services:
         https://cdn.modrinth.com/data/h6BAXuvn/versions/cfugvAt6/fxntstorage-1.3.8%2Bmc-1.21.1-neoforge.jar?mr_download_reason=standalone&mr_game_version=1.21.1&mr_loader=neoforge
       MODRINTH_EXCLUDE_FILES: |
         DistantHorizons-3.2.0-b-1.21.1-fabric-neoforge.jar
-      MEMORY: "13000M"
-      MAX_MEMORY: "14000M"
-      MAX_PLAYERS: "7"
+      MEMORY: "12000M"
+      MAX_MEMORY: "13000M"
+      MAX_PLAYERS: "5"
       MOTD: "gaming"
       ONLINE_MODE: "false"
       USE_MEOWICE_FLAGS: "true"
