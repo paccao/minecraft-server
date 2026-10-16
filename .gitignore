@@ -21,6 +21,7 @@
 !local/
 !local/docker-compose.yaml
 !local/prometheus.yaml
+!local/Pi5-temperature-sensors*.json
 
 ansible/keys
 ansible/vault.yaml
