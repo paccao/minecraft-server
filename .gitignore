@@ -19,9 +19,10 @@
 !.sops.yaml
 !.yamlfmt.yaml
 !local/
+!local/dashboards/
 !local/docker-compose.yaml
 !local/prometheus.yaml
-!local/Pi5-temperature-sensors*.json
+!local/dashboards/*.json
 
 ansible/keys
 ansible/vault.yaml
