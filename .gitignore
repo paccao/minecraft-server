@@ -22,6 +22,7 @@
 !local/dashboards/
 !local/docker-compose.yaml
 !local/prometheus.yaml
+!local/provisioning.yaml
 !local/dashboards/*.json
 
 ansible/keys
