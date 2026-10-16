@@ -56,6 +56,21 @@ If you want to restore from a specific backup, change the `WORLD` variable and a
 
 **Make sure to remove it after you have restored your backup**
 
+## Read metrics
+
+Raw query:
+
+```sh
+curl http://192.168.30.30:9100/metrics
+```
+
+View in grafana at `http://localhost:3000`
+
+```sh
+podman volume ls
+podman volume inspect local_prometheus-data
+```
+
 ## Online mode
 
 Set the argument `ONLINE_MODE` in the compose file to `true`, makes it use minecraft servers for authentication but there is a bug with the mod `Minecraft Comes Alive` when you die, you respawn as your minecraft accounts model, instead of the "villager-esque" one.
