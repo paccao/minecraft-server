@@ -33,7 +33,8 @@ services:
       SIMULATION_DISTANCE: "9"
       VIEW_DISTANCE: "10"
       LEVEL: "pacpack"
-      WORLD: "/backups/pacpack_2026-09-23_23-22-13.zip"
+      WORLD: "/backups/pacpack_2026-10-20_17-39-26.zip"
+      #FORCE_WORLD_COPY: true
       SPAWN_PROTECTION: "0"
       RATE_LIMIT: "0"
       ENFORCE_SECURE_PROFILE: "false"
